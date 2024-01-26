@@ -1,22 +1,23 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import Loader from "../components/Loader";
 import { Island } from "../models/Island";
 import Bird from "../models/Bird";
+import HomeInfo from "../components/HomeInfo";
 
 const Home = () => {
   const [isRotating, setIsRotating] = useState(false);
-  const [currentStage, setCurrentStage] = useState(0);
+  const [currentStage, setCurrentStage] = useState(null);
   const adjustIslandForScreenSize = () => {
     let screenScale = null;
     let screenPosition = [0, -56.5, -220];
-    let rotation = [0.4, 0, 0];
+    let rotation = [0.4, -2, 0];
 
     if (window.innerWidth < 768) {
-      // screenScale = [0.1, 0.1, 0.1];
+      // screenScale = [0.8, 0.8, 0.8];
       screenScale = [0.4, 0.4, 0.4];
     } else {
-      screenScale = [0.4, 0.4, 0.4];
+      screenScale = [0.5, 0.5, 0.5];
     }
     return [screenPosition, screenScale, rotation];
   };
@@ -25,9 +26,9 @@ const Home = () => {
 
   return (
     <section className="w-full h-screen relative">
-      {/* <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
-        sss
-      </div> */}
+      <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
+        {currentStage && <HomeInfo currentStage={currentStage} />}
+      </div>
       <Canvas
         className={`w-full h-screen bg-transparent  ${
           isRotating ? "cursor-grabbing" : "cursor-grab"

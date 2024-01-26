@@ -14,8 +14,8 @@ const Bird = () => {
   }, [actions]);
 
   const rotationSpeed = 0.15;
-  const flightSpeed = 0.9; // Adjust the flight speed as needed
-  const flightRadius = 8.0; // Adjust the flight radius as needed
+  const flightSpeed = 0.4; // Adjust the flight speed as needed
+  const flightRadius = 5.0; // Adjust the flight radius as needed
 
   useFrame((state, delta) => {
     // Rotate the bird
