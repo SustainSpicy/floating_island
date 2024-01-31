@@ -14,15 +14,23 @@ const Nav = () => {
         <NavLink
           to="/about"
           className={({ isActive }) =>
-            isActive ? "text-[#127499]" : "text-white"
+            isActive ? "text-[#127499]" : "text-blue-950"
           }
         >
           About
         </NavLink>
         <NavLink
+          to="/projects"
+          className={({ isActive }) =>
+            isActive ? "text-[#127499]" : "text-blue-950"
+          }
+        >
+          Projects
+        </NavLink>
+        <NavLink
           to="/contact"
           className={({ isActive }) =>
-            isActive ? "text-[#127499]" : "text-white"
+            isActive ? "text-[#127499]" : "text-blue-950"
           }
         >
           Contact
