@@ -20,8 +20,11 @@ const About = () => {
 
       <div className="mt-5 flex flex-col gap-3 text-slate-500">
         <p>
-          Software Engineer based in {"country"}, specializing in technical
-          education through hands-on learning and building applications.
+          I'm a skilled software developer with experience in TypeScript and
+          JavaScript, and expertise in frameworks like React, Node.js,Next.js
+          and Three.js. I'm create efficient, scalable, and user-friendly
+          solutions that solve real-world problems. Let's work together to bring
+          your ideas to life!
         </p>
       </div>
 

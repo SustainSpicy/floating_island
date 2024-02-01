@@ -4,16 +4,12 @@ import Loader from "../components/Loader";
 import { Island } from "../models/Island";
 import Bird from "../models/Bird";
 import HomeInfo from "../components/HomeInfo";
-import { soundoff, soundon } from "../assets/icons";
-import sakura from "../assets/sakura.mp3";
+import { Preload } from "@react-three/drei";
 
 const Home = () => {
-  const audioRef = useRef(new Audio(sakura));
-  audioRef.current.volume = 0.4;
-  audioRef.current.loop = true;
   const [isRotating, setIsRotating] = useState(false);
   const [currentStage, setCurrentStage] = useState(null);
-  const [isPlayingMusic, setIsPlayingMusic] = useState(false);
+
   const adjustIslandForScreenSize = () => {
     let screenScale = null;
     let screenPosition = [0, -56.5, -220];
@@ -30,14 +26,6 @@ const Home = () => {
   const [isLandPosition, islandScale, islandRotation] =
     adjustIslandForScreenSize();
 
-  useEffect(() => {
-    if (isPlayingMusic) {
-      audioRef.current.play();
-    }
-    return () => {
-      audioRef.current.pause();
-    };
-  }, [isPlayingMusic]);
   return (
     <section className="w-full h-screen relative">
       <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
@@ -66,16 +54,10 @@ const Home = () => {
             setIsRotating={setIsRotating}
             setCurrentStage={setCurrentStage}
           />
+          <Preload all />
         </Suspense>
       </Canvas>
-      <div className="absolute bottom-2 left-2">
-        <img
-          src={!isPlayingMusic ? soundoff : soundon}
-          alt="jukebox"
-          onClick={() => setIsPlayingMusic(!isPlayingMusic)}
-          className="w-10 h-10 cursor-pointer object-contain"
-        />
-      </div>
+      <div className="   bottom-2 left-2"></div>
     </section>
   );
 };
